@@ -1,13 +1,13 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import TechnologyGrid from './components/TechnologyGrid'
+import TechnologiesSection from './components/TechnologiesSection'
 
 function App() {
   return (
     <div className="min-h-screen">
       <Navbar />
       <Hero />
-      <TechnologyGrid />
+      <TechnologiesSection />
     </div>
   )
 }

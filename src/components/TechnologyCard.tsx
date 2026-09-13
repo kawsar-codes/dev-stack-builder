@@ -18,9 +18,10 @@ const badgeColors = [
 interface TechnologyCardProps {
   technology: Technology
   colorIndex: number
+  onAdd: (technology: Technology) => void
 }
 
-function TechnologyCard({ technology, colorIndex }: TechnologyCardProps) {
+function TechnologyCard({ technology, colorIndex, onAdd }: TechnologyCardProps) {
   const badgeColor = badgeColors[colorIndex % badgeColors.length]
 
   return (
@@ -52,6 +53,7 @@ function TechnologyCard({ technology, colorIndex }: TechnologyCardProps) {
 
       <button
         type="button"
+        onClick={() => onAdd(technology)}
         className="mt-5 w-full cursor-pointer rounded-lg bg-slate-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
       >
         Add to Stack
