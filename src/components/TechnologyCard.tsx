@@ -18,10 +18,11 @@ const badgeColors = [
 interface TechnologyCardProps {
   technology: Technology
   colorIndex: number
+  isSelected: boolean
   onAdd: (technology: Technology) => void
 }
 
-function TechnologyCard({ technology, colorIndex, onAdd }: TechnologyCardProps) {
+function TechnologyCard({ technology, colorIndex, isSelected, onAdd }: TechnologyCardProps) {
   const badgeColor = badgeColors[colorIndex % badgeColors.length]
 
   return (
@@ -54,9 +55,14 @@ function TechnologyCard({ technology, colorIndex, onAdd }: TechnologyCardProps) 
       <button
         type="button"
         onClick={() => onAdd(technology)}
-        className="mt-5 w-full cursor-pointer rounded-lg bg-slate-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800"
+        aria-disabled={isSelected}
+        className={
+          isSelected
+            ? 'mt-5 w-full cursor-not-allowed rounded-lg bg-slate-100 py-3 text-sm font-semibold text-slate-400'
+            : 'mt-5 w-full cursor-pointer rounded-lg bg-slate-900 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800'
+        }
       >
-        Add to Stack
+        {isSelected ? 'Added to Stack' : 'Add to Stack'}
       </button>
     </div>
   )

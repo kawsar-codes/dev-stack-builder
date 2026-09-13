@@ -1,22 +1,36 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 import type { Technology } from '../types'
 import TechnologyGrid from './TechnologyGrid'
 import YourStack from './YourStack'
 
 function TechnologiesSection() {
   const [selectedStack, setSelectedStack] = useState<Technology[]>([])
+  const selectedIds = new Set(selectedStack.map((item) => item.id))
 
   const handleAddToStack = (technology: Technology) => {
-    setSelectedStack((current) =>
-      current.some((item) => item.id === technology.id) ? current : [...current, technology],
-    )
+    if (selectedIds.has(technology.id)) {
+      toast.warning(`${technology.name} is already in your stack.`)
+      return
+    }
+
+    setSelectedStack((current) => [...current, technology])
+    toast.success(`${technology.name} added to your stack.`)
   }
 
   const handleRemoveFromStack = (id: string) => {
+    const technology = selectedStack.find((item) => item.id === id)
     setSelectedStack((current) => current.filter((item) => item.id !== id))
+
+    if (technology) {
+      toast.info(`${technology.name} removed from your stack.`)
+    }
   }
 
-  const handleRemoveAll = () => setSelectedStack([])
+  const handleRemoveAll = () => {
+    setSelectedStack([])
+    toast.info('Your stack has been cleared.')
+  }
 
   return (
     <section id="technologies" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
@@ -27,7 +41,7 @@ function TechnologiesSection() {
 
       <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-4 lg:items-start">
         <div className="lg:col-span-3">
-          <TechnologyGrid onAdd={handleAddToStack} />
+          <TechnologyGrid selectedIds={selectedIds} onAdd={handleAddToStack} />
         </div>
 
         <YourStack
