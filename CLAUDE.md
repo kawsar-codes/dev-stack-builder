@@ -3,6 +3,19 @@
 This is Kawsar's Programming Hero **assignment A-5**. The full requirement list is in
 `docs/ASSIGNMENT.md` — read it before building any feature, and check work against it.
 
+The design to match is in `docs/ui/` — **look at these images before writing any UI code**:
+
+| File | What it shows |
+| --- | --- |
+| `docs/ui/full-page-design.png` | the whole desktop page: navbar, hero, card grid, stack panel, footer |
+| `docs/ui/your-stack-empty.png` | the Your Stack panel in its empty state |
+| `docs/ui/your-stack-with-items.png` | the Your Stack panel with two technologies selected |
+| `docs/ui/hamburger.png` | the mobile hamburger icon |
+| `docs/ui/logo.png` | the Dev Stack brand logo |
+
+The hero illustration is already in place at `public/hero-image.png` — use `/hero-image.png`
+as its `src`.
+
 ## Who I am working with
 
 Kawsar is an early-to-intermediate self-taught developer. Explain new concepts in **Bangla**,
