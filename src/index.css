@@ -1,0 +1,42 @@
+@import 'tailwindcss';
+@plugin 'daisyui' {
+  themes: light --default;
+}
+
+/* ------------------------------------------------------------------
+   BRAND THEME — the whole site is themed from the three colors below.
+   Change these three values and the logo, hero heading and every
+   primary button re-theme together.
+------------------------------------------------------------------ */
+@theme {
+  --color-brand-from: #ff6a2b; /* orange */
+  --color-brand-via: #ec1e79; /* pink   */
+  --color-brand-to: #7c3aed; /* violet */
+
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --brand-gradient: linear-gradient(
+    90deg,
+    var(--color-brand-from) 0%,
+    var(--color-brand-via) 50%,
+    var(--color-brand-to) 100%
+  );
+}
+
+/* Paint the gradient as a background (buttons, logo badge) */
+@utility brand-gradient {
+  background-image: var(--brand-gradient);
+}
+
+/* Paint the gradient onto the text itself (brand name, hero highlight) */
+@utility brand-gradient-text {
+  background-image: var(--brand-gradient);
+  background-clip: text;
+  color: transparent;
+}
+
+body {
+  @apply font-sans text-slate-600 antialiased;
+}
